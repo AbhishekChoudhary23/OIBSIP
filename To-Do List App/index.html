@@ -1,49 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to-do</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+    <title>Todo List App</title>
 </head>
 
 <body>
-    <nav class="navbar bg-primary">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Navbar</span>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #090c0c;
+            display: grid;
+            place-items: center;
+            align-items: center;
+            min-height: 50vh;
+        }
+
+        h1 {
+
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 15px #0073e6, 0 0 17px #59e989, 0 0 19px #adf605, 0 0 21px #04e863, 0 0 23px #0b84fd;
+
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        li span {
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        li button {
+
+            margin: 10px;
+        }
+
+        .edit_btn {
+            margin-left: 10vh;
+        }
+
+        button {
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+            border-radius: 20px;
+            margin: 50px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+        }
+
+        button:hover {
+            background-position: right center;
+            background-size: 200% auto;
+            -webkit-animation: pulse 2s infinite;
+            animation: pulse512 1.5s infinite;
+        }
+
+        @keyframes pulse512 {
+            0% {
+                box-shadow: 0 0 0 0 #05bada66;
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+            }
+        }
+
+        .form-control {
+            position: relative;
+            margin: 20px 0 40px;
+            width: 190px;
+        }
+
+        .form-control input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px #fff solid;
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .form-control input:focus,
+        .form-control input:valid {
+            outline: 0;
+            border-bottom-color: lightblue;
+        }
+
+        .form-control label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .form-control label span {
+            display: inline-block;
+            font-size: 18px;
+            min-width: 5px;
+            color: #fff;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-control input:focus+label span,
+        .form-control input:valid+label span {
+            color: lightblue;
+            transform: translateY(-30px);
+        }
+
+        .card {
+            width: 200px;
+            height: 50px;
+            background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+            border-radius: 20px;
+            transition: all .3s;
+        }
+
+        .card2 {
+            width: 200px;
+            height: 50px;
+            background-color: #1a1a1a;
+            transition: all .2s;
+        }
+
+        .card2:hover {
+            border-radius: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+        }
+    </style>
+    <h1>Todo List App</h1>
+
+    <form id="todo-form">
+        <div class="form-control">
+            <input type="text" required="" id="todo-input" placeholder="">
+            <label>
+                <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
+                    style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
+                    style="transition-delay:200ms">r</span><span style="transition-delay:250ms"> </span><span
+                    style="transition-delay:300ms">a</span><span style="transition-delay:350ms"> </span><span 
+                    style="transition-delay:400ms">T</span><span style="transition-delay:450ms">a</span><span
+                    style="transition-delay:500ms">s</span><span style="transition-delay:550ms">k</span>
+            </label>
         </div>
-    </nav>
+        <button type="submit">Add</button>
+    </form>
 
-    <div class="container col-6">
-        <div class="input-group mb-3 mt-5">
-            <input type="text" class="form-control" placeholder="Add Task" aria-label="tasks"
-                aria-describedby="button-addon2">
-            <button id="add_task" class="btn btn-outline-success " type="button" id="button-addon2">Add</button>
-        </div>
-
-        <ul class="list-group">
-            <li class="list-group-item">An item</li>
-
-        </ul>
-    </div>
+    <ul id="todo-list"></ul>
 
     <script>
-        let addTask = document.getElementById('add_task')
-        addTask.addEventListener('click', task)
-        function task(e) {
-            let currentBtn = e.currentTargert;
-            let currentInput = currentBtn.previousElementSibling
-            console.log(currentInput.value)
+        // Get the form and list elements
+        const form = document.getElementById('todo-form');
+        const input = document.getElementById('todo-input');
+        const list = document.getElementById('todo-list');
+
+        // Function to create todo item
+        function createTodoItem(task) {
+            const li = document.createElement('li'); // Create new list item
+
+            const span = document.createElement('span'); // Create span for task text
+            span.textContent = task; // Set the task as span text
+
+            const editBtn = document.createElement('button'); // Create edit button
+            editBtn.textContent = 'Edit'; // Set button text
+            editBtn.addEventListener('click', function () {
+                const newTask = prompt('Enter the new task'); // Prompt for new task
+                if (newTask && newTask.trim() !== '') {
+                    span.textContent = newTask; // Update the task in the list
+                }
+            });
+
+            const deleteBtn = document.createElement('button'); // Create delete button
+            deleteBtn.textContent = 'Delete'; // Set button text
+            deleteBtn.addEventListener('click', function () {
+                li.remove(); // Remove the task from the list
+            });
+
+            li.appendChild(span).classList.add("card", "card2"); // Add span to the list item
+            li.appendChild(editBtn).className = "edit_btn"; // Add edit button to the list item
+            li.appendChild(deleteBtn); // Add delete button to the list item
+
+            return li;
         }
+
+        // Add event listener for form submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const task = input.value; // Get the entered task
+
+            if (task.trim() !== '') { // Ensure task is not empty
+                const todoItem = createTodoItem(task); // Create todo item
+                list.appendChild(todoItem); // Add todo item to the list
+
+                input.value = ''; // Clear the input field
+            }
+        });
+
     </script>
-
-
 </body>
 
 </html>
